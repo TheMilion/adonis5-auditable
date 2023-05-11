@@ -18,6 +18,8 @@ Once you have installed adonis5-auditable, make sure to start migrations in orde
 > $ node ace migration:run
 
 `Remember that the audit automatically creates the migration pointing to the "users" table with reference to its "id"`.
+
+
 > Example with id
 
 ```js 
