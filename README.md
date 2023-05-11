@@ -15,5 +15,5 @@ Server.middleware.register([
 Using the module:
 Add the following to your model's boot method:
 
-class MyModel extends AuditModel {
+export default class MyModel extends AuditModel {
 }
