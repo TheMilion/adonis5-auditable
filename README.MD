@@ -8,9 +8,9 @@ Install npm module:
 Register provider
 Once you have installed adonis5-auditable, make sure to register the provider inside start/kernel.ts in order to make use of it.
 
-Server.middleware.register([
-  () => import('App/Middleware/AuditMiddleware')
-])
+> Server.middleware.register([
+>  () => import('App/Middleware/AuditMiddleware')
+> ])
 
 Start migrations
 
