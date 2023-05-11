@@ -5,7 +5,8 @@ Install npm module:
 
 > $ npm install adonis5-auditable
 
-Register Global middleware 
+## `Register Global middleware`
+
 Once you have installed adonis5-auditable, make sure to register the Global middleware inside start/kernel.ts in order to make use of it.
 
 > Server.middleware.register([ () => import('App/Middleware/AuditMiddleware') ])
@@ -13,6 +14,8 @@ Once you have installed adonis5-auditable, make sure to register the Global midd
 ## `Start migrations`
 
 Once you have installed adonis5-auditable, make sure to start migrations in order to make use of it.
+
+> $ node ace migration:run
 
 `Remember that the audit automatically creates the migration pointing to the "users" table with reference to its "id"`.
 > Example with id
