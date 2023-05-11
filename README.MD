@@ -41,7 +41,7 @@ The same goes for the reference of the selected auth model into the AuditModel. 
 ```js
 await Audit.create({
     event: 'delete',
-    `user_id: auth && auth.user ? auth.user.id : null`,
+    user_id: auth && auth.user ? auth.user.id : null,
     url: url,
     auditable: model.constructor.name,
     auditable_id: primaryKeyValue,
@@ -56,7 +56,7 @@ await Audit.create({
 ```js
 await Audit.create({
     event: 'delete',
-    `user_uuid: auth && auth.user ? auth.user.uuid : null`,
+    user_uuid: auth && auth.user ? auth.user.uuid : null,
     url: url,
     auditable: model.constructor.name,
     auditable_id: primaryKeyValue,
@@ -68,12 +68,11 @@ await Audit.create({
 
 In case you need to change the values. Go into the AuditModel model and change the values in the @afterCreate @beforeUpdate @beforeDelete decorators
 
-node ace migration:run
-
+> node ace migration:run
 
 Using the module:
 Add the following to your model's boot method:
 
-export default class MyModel extends AuditModel {
+export default class MyModel `extends AuditModel` {
 }
 
