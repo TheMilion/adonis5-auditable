@@ -17,6 +17,13 @@ Once you have installed adonis5-auditable, make sure to start migrations in orde
 
 > $ node ace migration:run
 
+
+Using the module:
+Add the following to your model's boot method:
+
+export default class MyModel `extends AuditModel` {
+}
+
 `Remember that the audit automatically creates the migration pointing to the "users" table with reference to its "id"`.
 
 
@@ -68,11 +75,5 @@ await Audit.create({
 
 In case you need to change the values. Go into the AuditModel model and change the values in the @afterCreate @beforeUpdate @beforeDelete decorators
 
-> node ace migration:run
 
-Using the module:
-Add the following to your model's boot method:
-
-export default class MyModel `extends AuditModel` {
-}
 
