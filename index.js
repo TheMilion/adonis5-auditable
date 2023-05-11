@@ -4,10 +4,10 @@ const { execSync } = require("child_process");
 
 var mkdirp = require("mkdirp");
 
-let modelsFolder = path.resolve(__dirname, "../app/Models");
-let middlewareFolder = path.resolve(__dirname, "../app/Middleware");
-let helpersFolder = path.resolve(__dirname, "../app/Helpers");
-let migrationFolder = path.resolve(__dirname, "../database/migrations");
+let modelsFolder = path.resolve(__dirname, "../../app/Models");
+let middlewareFolder = path.resolve(__dirname, "../../app/Middleware");
+let helpersFolder = path.resolve(__dirname, "../../app/Helpers");
+let migrationFolder = path.resolve(__dirname, "../../database/migrations");
 
 mkdirp.sync(modelsFolder);
 mkdirp.sync(middlewareFolder);
