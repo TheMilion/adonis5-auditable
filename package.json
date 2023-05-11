@@ -1,0 +1,27 @@
+{
+  "name": "adonis5-auditable",
+  "version": "1.0.0",
+  "description": "Audit models in AdonisJS 5",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheMilion/adonis5-auditable.git"
+  },
+  "keywords": [
+    "Adonisjs",
+    "adonis5",
+    "audit",
+    "auditable",
+    "adonis5-audit",
+    "adonis5-auditable"
+  ],
+  "author": "Giuseppe Marinelli <info@giuseppemarinelli.it>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheMilion/adonis5-auditable/issues"
+  },
+  "homepage": "https://github.com/TheMilion/adonis5-auditable#readme"
+}
