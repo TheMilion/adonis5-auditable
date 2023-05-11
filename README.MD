@@ -32,7 +32,7 @@ table.integer('user_id').unsigned().references('id').inTable('users')
 table.uuid('user_uuid').unsigned().references('id').inTable('users')
 ```
 
-In case you need to change the values. Before starting the migration, modify the data according to your needs.
+In case you need to change the values. Before starting the migration, modify the file audit_migrations present in database/migrations according to your needs.
 
 The same goes for the reference of the selected auth model into the AuditModel. `It automatically points to the "auth.user.id" value`
 
