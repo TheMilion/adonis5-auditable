@@ -10,7 +10,7 @@ Once you have installed adonis5-auditable, make sure to register the Global midd
 
 > Server.middleware.register([ () => import('App/Middleware/AuditMiddleware') ])
 
-Start migrations
+## `Start migrations`
 
 Once you have installed adonis5-auditable, make sure to start migrations in order to make use of it.
 
