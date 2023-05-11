@@ -12,6 +12,13 @@ Server.middleware.register([
   () => import('App/Middleware/AuditMiddleware')
 ])
 
+
+Start migrations
+Once you have installed adonis5-auditable, make sure to start migrations in order to make use of it.
+
+node ace migration:run
+
+
 Using the module:
 Add the following to your model's boot method:
 
