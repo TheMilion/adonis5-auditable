@@ -11,6 +11,7 @@ Once you have installed adonis5-auditable, make sure to register the Global midd
 > Server.middleware.register([ () => import('App/Middleware/AuditMiddleware') ])
 
 Start migrations
+
 Once you have installed adonis5-auditable, make sure to start migrations in order to make use of it.
 
 `Remember that the audit automatically creates the migration pointing to the "users" table with reference to its "id"`.
@@ -19,11 +20,21 @@ Once you have installed adonis5-auditable, make sure to start migrations in orde
 
 > Example with uuid table.uuid('user_uuid').unsigned().references('id').inTable('users')
 
-In case you need to change the values. Before starting the migration, modify the data according to your needs.+
+In case you need to change the values. Before starting the migration, modify the data according to your needs.
 
-The same goes for the reference of the selected auth model. It automatically points to the "auth.user.id" value
 
-user_id: auth && auth.user ? auth.user.id : null,
+The same goes for the reference of the selected auth model. `It automatically points to the "auth.user.id" value`
+
+> await Audit.create({
+>      event: 'delete',
+>      `user_id: auth && auth.user ? auth.user.id : null`,
+>      url: url,
+>      auditable: model.constructor.name,
+>      auditable_id: primaryKeyValue,
+>      ip: ipAddress,
+>      old_data: JSON.stringify(originalData),
+>      new_data: '',
+>  })
 
 In case you need to change the values. Go into the AuditModel model and change the values ​​in the @afterCreate @beforeUpdate @beforeDelete decorators
 
