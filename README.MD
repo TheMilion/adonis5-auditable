@@ -13,7 +13,20 @@ Server.middleware.register([
 ])
 
 Start migrations
+
 Once you have installed adonis5-auditable, make sure to start migrations in order to make use of it.
+
+Remember that the audit automatically creates the migration pointing to the "users" table with reference to its "id".
+
+table.integer('user_id').unsigned().references('id').inTable('user')
+
+In case you need to change the values. Before starting the migration, modify the data according to your needs.+
+
+The same goes for the reference of the selected auth model. It automatically points to the "auth.user.id" value
+
+user_id: auth && auth.user ? auth.user.id : null,
+
+In case you need to change the values. Go into the AuditModel model and change the values ​​in the @afterCreate @beforeUpdate @beforeDelete decorators
 
 node ace migration:run
 
@@ -23,3 +36,6 @@ Add the following to your model's boot method:
 
 export default class MyModel extends AuditModel {
 }
+
+
+Rem
