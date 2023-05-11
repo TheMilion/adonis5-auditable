@@ -26,7 +26,7 @@ The same goes for the reference of the selected auth model into the AuditModel. 
 
 > Example with id
 
-
+```js
 await Audit.create({
     event: 'delete',
     `user_id: auth && auth.user ? auth.user.id : null`,
@@ -37,10 +37,11 @@ await Audit.create({
     old_data: JSON.stringify(originalData),
     new_data: '',
 })
+```
 
 > Example with uuid
 
-
+```js
 await Audit.create({
     event: 'delete',
     `user_uuid: auth && auth.user ? auth.user.uuid : null`,
@@ -51,6 +52,7 @@ await Audit.create({
     old_data: JSON.stringify(originalData),
     new_data: '',
 })
+```
 
 In case you need to change the values. Go into the AuditModel model and change the values in the @afterCreate @beforeUpdate @beforeDelete decorators
 
