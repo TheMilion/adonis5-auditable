@@ -8,8 +8,12 @@ fs.copyFileSync(path.resolve(__dirname, "../AuditModel.ts"), path.resolve(__dirn
 // Sposta il file AuditMiddleware.ts nella cartella "app/Middleware"
 fs.copyFileSync(path.resolve(__dirname, "../AuditMiddleware.ts"), path.resolve(__dirname, "../../app/Middleware/AuditMiddleware.ts"));
 
+// Sposta il file HttpContext.ts nella cartella "app/Helpers/"
+fs.copyFileSync(path.resolve(__dirname, "../HttpContext.ts"), path.resolve(__dirname, "../../app/Helpers/HttpContext.ts"));
+
 // Sposta il file AuditMigration.ts nella cartella "database/migrations"
 fs.copyFileSync(path.resolve(__dirname, "../AuditMigration.ts"), path.resolve(__dirname, "../../database/migrations/{timestamp}_audit_migration.js"));
+
 
 // // Aggiungi il middleware globalmente nel file "start/kernel.ts"
 // const kernelPath = path.resolve(__dirname, "../../start/kernel.ts");
