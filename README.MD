@@ -15,10 +15,17 @@ Start migrations
 Once you have installed adonis5-auditable, make sure to start migrations in order to make use of it.
 
 `Remember that the audit automatically creates the migration pointing to the "users" table with reference to its "id"`.
+> Example with id
 
-> Example with id table.integer('user_id').unsigned().references('id').inTable('users')
+```js 
+table.integer('user_id').unsigned().references('id').inTable('users')
+```
 
-> Example with uuid table.uuid('user_uuid').unsigned().references('id').inTable('users')
+> Example with uuid 
+ 
+```js 
+table.uuid('user_uuid').unsigned().references('id').inTable('users')
+```
 
 In case you need to change the values. Before starting the migration, modify the data according to your needs.
 
