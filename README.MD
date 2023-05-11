@@ -25,6 +25,8 @@ In case you need to change the values. Before starting the migration, modify the
 The same goes for the reference of the selected auth model into the AuditModel. `It automatically points to the "auth.user.id" value`
 
 > Example with id
+
+
 await Audit.create({
     event: 'delete',
     `user_id: auth && auth.user ? auth.user.id : null`,
@@ -37,6 +39,8 @@ await Audit.create({
 })
 
 > Example with uuid
+
+
 await Audit.create({
     event: 'delete',
     `user_uuid: auth && auth.user ? auth.user.uuid : null`,
