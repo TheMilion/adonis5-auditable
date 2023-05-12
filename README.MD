@@ -5,9 +5,6 @@ Install npm module:
 
 > $ npm install adonis5-auditable
 
-Configure Module:
-> npm run adonis5-auditable-configure
-
 ## `Register Config in App.ts`
 
 Once you have installed adonis5-auditable, make sure to set in ServerConfig config/app.ts in order to make use of it.
