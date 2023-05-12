@@ -1,7 +1,7 @@
 import { BaseModel, afterCreate, beforeDelete, beforeUpdate, column } from '@ioc:Adonis/Lucid/Orm'
 import Audit from 'App/Models/AuditModel'
-import HttpContext from 'App/Helpers/HttpContext'
 import { DateTime } from 'luxon'
+import HttpContext from '@ioc:Adonis/Core/HttpContext'
 
 export default class AuditModel extends BaseModel {
     public static table = 'audits'
@@ -10,7 +10,7 @@ export default class AuditModel extends BaseModel {
     public id: number
 
     @column()
-    public user_id: number
+    public utente_id: number
 
     @column()
     public auditable_id: number
@@ -39,7 +39,7 @@ export default class AuditModel extends BaseModel {
     @beforeUpdate()
     public static async updateAudit(model: AuditModel) {
         // Attraverso il middleware che ho creato in precedenza vado a prendermi il contest
-        let { request, auth } = HttpContext.getContext()
+        let { request, auth } = HttpContext.get()
         // Recupero Indirizzo IP
         const ipAddress = request.ip()
         // Recupero Url che ha innescato la chiamata
@@ -60,7 +60,7 @@ export default class AuditModel extends BaseModel {
         if (hasChanges) {
             await Audit.create({
                 event: 'update',
-                user_id: auth && auth.user ? auth.user.id : null,
+                utente_id: auth && auth.user ? auth.user.id : null,
                 url: url,
                 auditable: model.constructor.name,
                 auditable_id: primaryKeyValue,
@@ -73,8 +73,8 @@ export default class AuditModel extends BaseModel {
 
     @afterCreate()
     public static async createAudit(model: AuditModel) {
-        // Attraverso il middleware che ho creato in precedenza vado a prendermi il contest
-        let { request, auth } = HttpContext.getContext()
+        // Attraverso il Context che è sotto AsyncLocalStorage che ho creato in precedenza vado a prendermi il contest
+        let { request, auth } = HttpContext.get()
         // Recupero Indirizzo IP
         const ipAddress = request.ip()
         // Recupero Url che ha innescato la chiamata
@@ -90,7 +90,7 @@ export default class AuditModel extends BaseModel {
         // Verifica se ci sono modifiche tra i dati originali e i nuovi dati
         await Audit.create({
             event: 'create',
-            user_id: auth && auth.user ? auth.user.id : null,
+            utente_id: auth && auth.user ? auth.user.id : null,
             url: url,
             auditable: model.constructor.name,
             auditable_id: primaryKeyValue,
@@ -103,7 +103,7 @@ export default class AuditModel extends BaseModel {
     @beforeDelete()
     public static async deleteAudit(model: AuditModel) {
         // Attraverso il middleware che ho creato in precedenza vado a prendermi il contest
-        let { request, auth } = HttpContext.getContext()
+        let { request, auth } = HttpContext.get()
         // Recupero Indirizzo IP
         const ipAddress = request.ip()
         // Recupero Url che ha innescato la chiamata
@@ -121,7 +121,7 @@ export default class AuditModel extends BaseModel {
         // Verifica se ci sono modifiche tra i dati originali e i nuovi dati
         await Audit.create({
             event: 'delete',
-            user_id: auth && auth.user ? auth.user.id : null,
+            utente_id: auth && auth.user ? auth.user.id : null,
             url: url,
             auditable: model.constructor.name,
             auditable_id: primaryKeyValue,

@@ -1,6 +1,6 @@
 {
   "name": "adonis5-auditable",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Audit models in AdonisJS 5",
   "main": "index.js",
   "scripts": {
