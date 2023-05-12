@@ -33,7 +33,7 @@ export default class AuditModel extends BaseModel {
     @column()
     public new_data: string
 
-    @column.dateTime({ autoCreate: true })
+    @column.dateTime()
     public createdAt: DateTime
 
     @beforeUpdate()
@@ -67,6 +67,7 @@ export default class AuditModel extends BaseModel {
                 ip: ipAddress,
                 old_data: JSON.stringify(originalData),
                 new_data: JSON.stringify(newData),
+                created_at: DateTime.now()
             })
         }
     }
@@ -97,6 +98,7 @@ export default class AuditModel extends BaseModel {
             ip: ipAddress,
             old_data: '{}',
             new_data: JSON.stringify(newData),
+            created_at: DateTime.now()
         })
     }
 
@@ -128,6 +130,7 @@ export default class AuditModel extends BaseModel {
             ip: ipAddress,
             old_data: JSON.stringify(originalData),
             new_data: '',
+            created_at: DateTime.now()
         })
     }
 
