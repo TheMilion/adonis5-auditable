@@ -18,8 +18,7 @@ if (!fs.existsSync(auditModelDestPath)) {
 }
 
 // Genera il nome del file di migrazione basato sul timestamp corrente
-const timestamp = new Date().getTime();
-const migrationFileName = `${timestamp}_audit_migration.ts`;
+const migrationFileName = `audit_migration.ts`;
 const migrationSourcePath = path.resolve(__dirname, "templates/migrations/audit_migrations.ts");
 const migrationDestPath = path.resolve(migrationFolder, migrationFileName);
 
