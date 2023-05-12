@@ -10,7 +10,7 @@ export default class AuditModel extends BaseModel {
     public id: number
 
     @column()
-    public utente_id: number
+    public user_id: number
 
     @column()
     public auditable_id: number
@@ -60,7 +60,7 @@ export default class AuditModel extends BaseModel {
         if (hasChanges) {
             await Audit.create({
                 event: 'update',
-                utente_id: auth && auth.user ? auth.user.id : null,
+                user_id: auth && auth.user ? auth.user.id : null,
                 url: url,
                 auditable: model.constructor.name,
                 auditable_id: primaryKeyValue,
@@ -90,7 +90,7 @@ export default class AuditModel extends BaseModel {
         // Verifica se ci sono modifiche tra i dati originali e i nuovi dati
         await Audit.create({
             event: 'create',
-            utente_id: auth && auth.user ? auth.user.id : null,
+            user_id: auth && auth.user ? auth.user.id : null,
             url: url,
             auditable: model.constructor.name,
             auditable_id: primaryKeyValue,
@@ -121,7 +121,7 @@ export default class AuditModel extends BaseModel {
         // Verifica se ci sono modifiche tra i dati originali e i nuovi dati
         await Audit.create({
             event: 'delete',
-            utente_id: auth && auth.user ? auth.user.id : null,
+            user_id: auth && auth.user ? auth.user.id : null,
             url: url,
             auditable: model.constructor.name,
             auditable_id: primaryKeyValue,
