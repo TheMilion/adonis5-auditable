@@ -1,6 +1,6 @@
 {
   "name": "adonis5-auditable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Audit models in AdonisJS 5",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "postinstall": "node index.js"
   },
   "dependencies": {
-    "mkdirp": "^3.0.1"
+    "mkdirp": "^3.0.1",
+    "async_hooks": "^1.0.0"
   },
   "repository": {
     "type": "git",

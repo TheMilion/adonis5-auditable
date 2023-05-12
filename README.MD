@@ -5,11 +5,15 @@ Install npm module:
 
 > $ npm install adonis5-auditable
 
-## `Register Global middleware`
+## `Register Config in App.ts`
 
-Once you have installed adonis5-auditable, make sure to register the Global middleware inside start/kernel.ts in order to make use of it.
+Once you have installed adonis5-auditable, make sure to set in ServerConfig config/app.ts in order to make use of it.
 
-> Server.middleware.register([ () => import('App/Middleware/AuditMiddleware') ])
+```js 
+export const http: ServerConfig = {
+  useAsyncLocalStorage: true,
+}
+```
 
 ## `Start migrations`
 
