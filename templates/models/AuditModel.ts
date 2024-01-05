@@ -2,6 +2,7 @@ import { BaseModel, afterCreate, beforeDelete, beforeUpdate, column } from "@ioc
 import Audit from "App/Models/AuditModel";
 import { DateTime } from "luxon";
 import HttpContext from "@ioc:Adonis/Core/HttpContext";
+import { v4 as uuid } from 'uuid'
 
 export default class AuditModel extends BaseModel {
   public static table = "audits";
@@ -66,7 +67,7 @@ export default class AuditModel extends BaseModel {
     if (hasChanges) {
       await Audit.create({
         event: "update",
-        utente_id: auth && auth.user ? auth.user.id : null,
+        user_id: auth && auth.user ? auth.user.id : null,
         url: url,
         auditable: model.constructor.name,
         auditable_id: primaryKeyValue,
@@ -103,7 +104,7 @@ export default class AuditModel extends BaseModel {
     // Verifica se ci sono modifiche tra i dati originali e i nuovi dati
     await Audit.create({
       event: "create",
-      utente_id: auth && auth.user ? auth.user.id : null,
+      user_id: auth && auth.user ? auth.user.id : null,
       url: url,
       auditable: model.constructor.name,
       auditable_id: primaryKeyValue,
@@ -141,7 +142,7 @@ export default class AuditModel extends BaseModel {
     // Verifica se ci sono modifiche tra i dati originali e i nuovi dati
     await Audit.create({
       event: "delete",
-      utente_id: auth && auth.user ? auth.user.id : null,
+      user_id: auth && auth.user ? auth.user.id : null,
       url: url,
       auditable: model.constructor.name,
       auditable_id: primaryKeyValue,
